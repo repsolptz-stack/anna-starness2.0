@@ -46,7 +46,7 @@
             --theme-accent: #8a1c24;
             --theme-glow: rgba(138, 28, 36, 0.7);
             --theme-story-tint: rgba(138, 28, 36, 0.22);
-            --theme-ambient: transparent;
+            --theme-ambient: rgba(138, 28, 36, 0.12);
         }
         body.theme-ether {
             --theme-accent: #5b859c;
@@ -82,6 +82,16 @@
         body.theme-ether .mood-ambient,
         body.theme-fire .mood-ambient {
             opacity: 1;
+        }
+        body.audio-playing .mood-ambient {
+            opacity: .82;
+            animation: playbackGlow 4.2s ease-in-out infinite alternate;
+        }
+        body.theme-ether.audio-playing .mood-ambient,
+        body.theme-fire.audio-playing .mood-ambient { opacity:1; }
+        @keyframes playbackGlow {
+            from { filter:brightness(.78); }
+            to { filter:brightness(1.18); }
         }
 
         /* Плёночное зерно и виньетка */
@@ -273,16 +283,42 @@
 
 
         /* ANNA STARNESS 2.2 — track transitions, live waveform, playback feedback */
-        .audio-card { will-change: transform, box-shadow; }
-        .audio-card.track-enter { animation: trackEnter .62s cubic-bezier(.2,.75,.25,1) both; }
+        .audio-card { will-change: transform, box-shadow; overflow:hidden; }
+        .audio-card.track-enter { animation: trackEnter .82s cubic-bezier(.2,.75,.25,1) both; }
+        .audio-card.track-enter::after {
+            content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+            background:linear-gradient(105deg,transparent 18%,color-mix(in srgb,var(--theme-accent) 17%,transparent) 50%,transparent 82%);
+            transform:translateX(-110%); animation:trackLightSweep .78s .04s ease-out both;
+        }
+        .audio-card.track-exit { animation:trackExit .28s cubic-bezier(.4,0,.7,.2) both; }
+        .audio-card.pause-feedback { animation:pauseFeedback .46s cubic-bezier(.2,.8,.25,1); }
         @keyframes trackEnter {
-            0% { transform: translateY(12px) scale(.992); filter: blur(3px); }
-            55% { transform: translateY(-2px) scale(1.003); filter: blur(0); }
-            100% { transform: translateY(0) scale(1); filter: blur(0); }
+            0% { opacity:.55; transform:translateX(18px) translateY(8px) scale(.985); filter:blur(8px); }
+            58% { opacity:1; transform:translateX(-2px) translateY(-2px) scale(1.003); filter:blur(0); }
+            100% { opacity:1; transform:translateX(0) translateY(0) scale(1); filter:blur(0); }
+        }
+        @keyframes trackExit {
+            0% { opacity:1; transform:translateX(3px) scale(1); filter:blur(0); }
+            100% { opacity:.35; transform:translateX(-16px) scale(.985); filter:blur(3px); }
+        }
+        @keyframes trackLightSweep { to { transform:translateX(110%); } }
+        @keyframes pauseFeedback {
+            0% { transform:translateX(3px) scale(1); filter:brightness(1.12); }
+            42% { transform:translateX(-2px) scale(.99); filter:brightness(.86); }
+            100% { transform:translateX(0) scale(1); filter:brightness(1); }
         }
         .audio-card.is-playing { box-shadow: 0 0 34px var(--theme-glow), inset 0 0 18px var(--theme-glow); }
+        .audio-card .track-heading h3 { transition:color .4s ease, text-shadow .4s ease; }
+        .audio-card.is-playing .track-heading h3 { color:#fff; text-shadow:0 0 22px var(--theme-glow); }
         .play-btn { transition: transform .28s ease, color .28s ease, background-color .28s ease, border-color .28s ease, box-shadow .28s ease; }
         .play-btn:active { transform: scale(.91); }
+        .audio-card.pause-feedback .play-btn { animation:pauseButton .46s cubic-bezier(.2,.8,.25,1); }
+        @keyframes pauseButton {
+            0% { transform:scale(1); box-shadow:0 0 0 0 var(--theme-glow); }
+            35% { transform:scale(.88); box-shadow:0 0 0 8px color-mix(in srgb,var(--theme-accent) 18%,transparent); }
+            72% { transform:scale(1.08); box-shadow:0 0 0 3px color-mix(in srgb,var(--theme-accent) 10%,transparent); }
+            100% { transform:scale(1); box-shadow:0 0 0 0 transparent; }
+        }
         .play-btn.is-playing {
             color:#090909; background:#f5f5f5; border-color:#f5f5f5;
             box-shadow:0 0 0 6px color-mix(in srgb, var(--theme-accent) 18%, transparent), 0 0 24px var(--theme-glow);
@@ -292,22 +328,37 @@
             0%,100% { box-shadow:0 0 0 4px color-mix(in srgb, var(--theme-accent) 14%, transparent), 0 0 16px var(--theme-glow); }
             50% { box-shadow:0 0 0 8px color-mix(in srgb, var(--theme-accent) 20%, transparent), 0 0 28px var(--theme-glow); }
         }
+        .track-heading { display:flex; align-items:center; gap:.65rem; min-height:32px; }
+        .track-heading h3 { min-width:0; }
         .track-waveform {
-            display:flex; align-items:center; justify-content:center; gap:3px;
-            width:34px; height:28px; flex:0 0 34px; opacity:.32;
-            transition:opacity .35s ease, filter .35s ease;
+            display:flex; align-items:center; justify-content:center; gap:1px;
+            width:82px; height:32px; flex:0 0 82px; opacity:.46;
+            border-left:1px solid rgba(255,255,255,.12); padding-left:9px;
+            transition:opacity .4s ease, filter .4s ease, transform .4s cubic-bezier(.2,.75,.25,1);
         }
         .track-waveform span {
-            display:block; width:2px; height:4px; border-radius:99px;
-            background:var(--theme-accent); transform:scaleY(.35);
-            transform-origin:center; transition:height .12s ease, transform .12s ease, opacity .3s ease;
+            display:block; width:2px; height:26px; flex:0 0 2px; border-radius:99px;
+            background:linear-gradient(to top,color-mix(in srgb,var(--theme-accent) 55%,transparent),var(--theme-accent) 58%,rgba(255,255,255,.9));
+            box-shadow:0 0 8px var(--theme-glow);
+            transform:scaleY(var(--wave-level,.12)); transform-origin:center;
+            opacity:var(--wave-opacity,.5);
+            transition:transform .09s linear, opacity .18s ease;
         }
-        .audio-card.is-playing .track-waveform { opacity:1; filter:drop-shadow(0 0 5px var(--theme-glow)); }
-        .audio-card.is-playing .track-waveform span { transform:scaleY(1); }
-        .audio-card:not(.is-playing) .track-waveform span { height:4px !important; transform:scaleY(.55); }
+        .audio-card.is-playing .track-waveform { opacity:1; filter:drop-shadow(0 0 7px var(--theme-glow)); transform:scale(1.04); }
+        .audio-card:not(.is-playing) .track-waveform span { --wave-level:.12 !important; --wave-opacity:.42 !important; }
+        #music { position:relative; isolation:isolate; }
+        #music::before {
+            content:""; position:absolute; z-index:-1; top:4%; left:50%; width:min(92vw,900px); aspect-ratio:1;
+            border-radius:50%; pointer-events:none; opacity:0;
+            background:radial-gradient(circle,color-mix(in srgb,var(--theme-accent) 15%,transparent),transparent 68%);
+            filter:blur(18px); transform:translateX(-50%) scale(.78);
+            transition:opacity .9s ease,transform 1.2s cubic-bezier(.2,.75,.25,1);
+        }
+        body.audio-playing #music::before { opacity:.9; transform:translateX(-50%) scale(1); }
         .play-btn .play-icon, .play-btn .pause-icon { transition:opacity .2s ease, transform .2s ease; }
         @media (prefers-reduced-motion:reduce) {
-            .audio-card.track-enter, .play-btn.is-playing { animation:none !important; }
+            .audio-card.track-enter, .audio-card.track-enter::after, .audio-card.track-exit, .play-btn.is-playing { animation:none !important; }
+            body.audio-playing .mood-ambient, .audio-card.pause-feedback, .audio-card.pause-feedback .play-btn { animation:none !important; }
             .play-btn, .track-waveform, .track-waveform span { transition:none !important; }
         }
 
@@ -730,6 +781,18 @@
                 btn?.classList.remove('is-playing');
                 card?.classList.remove('is-playing');
             }
+            function showPauseFeedback(card) {
+                if (!card || reducedMotion || card.classList.contains('track-exit')) return;
+                card.classList.remove('pause-feedback');
+                void card.offsetWidth;
+                const clearPauseFeedback = event => {
+                    if (event.target !== card || event.animationName !== 'pauseFeedback') return;
+                    card.classList.remove('pause-feedback');
+                    card.removeEventListener('animationend', clearPauseFeedback);
+                };
+                card.addEventListener('animationend', clearPauseFeedback);
+                card.classList.add('pause-feedback');
+            }
             function syncPlaybackState() {
                 const playing = audios.some(audio => !audio.paused && !audio.ended);
                 body.classList.toggle('audio-playing', playing);
@@ -803,13 +866,17 @@
                 const wave = document.createElement('div');
                 wave.className = 'track-waveform';
                 wave.setAttribute('aria-hidden', 'true');
-                for (let i = 0; i < 18; i++) {
+                for (let i = 0; i < 24; i++) {
                     const bar = document.createElement('span');
                     wave.appendChild(bar);
                 }
-                titleBlock.appendChild(wave);
+                const heading = document.createElement('div');
+                heading.className = 'track-heading';
+                const title = titleBlock.querySelector('h3');
+                title.before(heading);
+                heading.append(title, wave);
                 const bars = [...wave.children];
-                const item = { wave, bars, analyser: null, data: null, audio, graphReady: false };
+                const item = { wave, bars, analyser: null, data: null, audio, graphReady: false, phase: Math.random() * Math.PI * 2 };
                 visualizers.set(audio, item);
                 return item;
             }
@@ -823,8 +890,10 @@
                     audioContext ||= new AudioContextClass();
                     const source = audioContext.createMediaElementSource(audio);
                     item.analyser = audioContext.createAnalyser();
-                    item.analyser.fftSize = 64;
-                    item.analyser.smoothingTimeConstant = 0.78;
+                    item.analyser.fftSize = 256;
+                    item.analyser.smoothingTimeConstant = 0.84;
+                    item.analyser.minDecibels = -78;
+                    item.analyser.maxDecibels = -18;
                     source.connect(item.analyser);
                     item.analyser.connect(audioContext.destination);
                     item.data = new Uint8Array(item.analyser.frequencyBinCount);
@@ -837,21 +906,27 @@
             function renderWaveforms() {
                 let anyPlaying = false;
                 visualizers.forEach(item => {
-                    if (item.audio.paused || item.audio.ended) {
-                        item.bars.forEach(bar => { bar.style.height = '4px'; });
-                        return;
-                    }
+                    if (item.audio.paused || item.audio.ended) return;
                     anyPlaying = true;
                     if (item.analyser && item.data) {
                         item.analyser.getByteFrequencyData(item.data);
                         item.bars.forEach((bar, index) => {
-                            const sample = item.data[Math.min(item.data.length - 1, index + 1)] || 0;
-                            bar.style.height = `${4 + (sample / 255) * 21}px`;
+                            const position = index / (item.bars.length - 1);
+                            const bin = Math.min(item.data.length - 1, Math.floor(1 + Math.pow(position, 1.65) * (item.data.length - 2)));
+                            const sample = item.data[bin] / 255;
+                            const neighbor = item.data[Math.min(item.data.length - 1, bin + 1)] / 255;
+                            const level = Math.max(.1, Math.min(1, Math.pow(sample * .72 + neighbor * .28, .82)));
+                            bar.style.setProperty('--wave-level', level.toFixed(3));
+                            bar.style.setProperty('--wave-opacity', (.45 + level * .55).toFixed(3));
                         });
                     } else {
+                        const time = performance.now() / 1000;
                         item.bars.forEach((bar, index) => {
-                            const pulse = 5 + Math.abs(Math.sin((performance.now() / 150) + index * .72)) * 17;
-                            bar.style.height = `${pulse}px`;
+                            const pulse = .12 + Math.abs(Math.sin(time * 3.1 + index * .46 + item.phase)) * .54
+                                + Math.abs(Math.sin(time * 1.7 - index * .31 + item.phase)) * .28;
+                            const level = Math.min(1, pulse);
+                            bar.style.setProperty('--wave-level', level.toFixed(3));
+                            bar.style.setProperty('--wave-opacity', (.45 + level * .55).toFixed(3));
                         });
                     }
                 });
@@ -913,17 +988,37 @@
                         // Smoothly fade out the previous track before bringing in the selected one.
                         const previousTracks = audios.filter(other => other !== audio && !other.paused);
                         await Promise.all(previousTracks.map(async other => {
-                            await fadeVolume(other, 0, 190);
+                            const otherId = other.id.replace('audio-', '');
+                            const otherCard = document.querySelector(`.play-btn[data-audio="${otherId}"]`)?.closest('.audio-card');
+                            if (otherCard && !reducedMotion) {
+                                otherCard.classList.remove('track-exit');
+                                void otherCard.offsetWidth;
+                                otherCard.classList.add('track-exit');
+                            }
+                            const exitDuration = reducedMotion ? 0 : 280;
+                            await Promise.all([
+                                fadeVolume(other, 0, exitDuration),
+                                new Promise(resolve => window.setTimeout(resolve, exitDuration))
+                            ]);
                             other.pause();
                             other.volume = 1;
                             resetTrackUI(other);
+                            otherCard?.classList.remove('track-exit');
                         }));
                         activateVisualizer(audio, visualizer);
                         if (audioContext?.state === 'suspended') await audioContext.resume();
                         audio.volume = 0;
                         card.classList.remove('track-enter');
                         void card.offsetWidth;
-                        if (!reducedMotion) card.classList.add('track-enter');
+                        if (!reducedMotion) {
+                            card.classList.add('track-enter');
+                            const clearEnterAnimation = event => {
+                                if (event.target !== card || event.animationName !== 'trackEnter') return;
+                                card.classList.remove('track-enter');
+                                card.removeEventListener('animationend', clearEnterAnimation);
+                            };
+                            card.addEventListener('animationend', clearEnterAnimation);
+                        }
                         await audio.play();
                         await fadeVolume(audio, 1, 320);
                         activeTrackTitle = title;
@@ -943,6 +1038,7 @@
                 });
                 audio.addEventListener('pause', () => {
                     resetTrackUI(audio);
+                    showPauseFeedback(card);
                     btn.setAttribute('aria-label', `Воспроизвести: ${title}`);
                     syncPlaybackState();
                     stopWaveformsIfIdle();
