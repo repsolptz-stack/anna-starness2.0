@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://repsolptz-stack.github.io/anna-starness2.0/sitemap.xml
