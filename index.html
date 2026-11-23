@@ -155,7 +155,7 @@ function fade(audio,target,duration=420){const previous=fadeJobs.get(audio);if(p
 function setPlayingUI(audio){const card=audio.closest('.audio-card'),btn=$(`[data-play="${audio.id.replace('audio-','')}"]`);card?.classList.add('is-playing');btn?.classList.add('is-playing');if(btn)btn.setAttribute('aria-label',`Пауза: ${card?.dataset.title||''}`);syncRec();startWaves();}
 async function toggleTrack(id){if(transitionBusy)return;const audio=$(`#audio-${id}`),card=audio?.closest('.audio-card');if(!audio||!card)return;transitionBusy=true;buttons.forEach(b=>b.disabled=true);
 try{
- if(!audio.paused){await fade(audio,0,460);audio.pause();audio.volume=1;return;}
+ if(!audio.paused){await fade(audio,0,720);audio.pause();audio.volume=1;return;}
  const item=visualizers.get(audio);connectVisualizer(audio,item);
  // Resume Web Audio synchronously in the tap gesture; don't let a visualizer failure block playback.
  const resumePromise=audioContext?.state==='suspended'?audioContext.resume().catch(error=>{console.info('AudioContext resume:',error);}):Promise.resolve();
@@ -164,10 +164,15 @@ try{
  await Promise.resolve(playPromise);
  await resumePromise;
  const others=audios.filter(a=>a!==audio&&!a.paused);
- await Promise.all(others.map(async other=>{const otherCard=other.closest('.audio-card');otherCard?.classList.add('track-exit');await fade(other,0,420);other.pause();other.volume=1;resetUI(other);otherCard?.classList.remove('track-exit');}));
+ // True overlapping crossfade: both tracks change volume together, so there is no silent gap.
+ others.forEach(other=>other.closest('.audio-card')?.classList.add('track-exit'));
  card.classList.remove('track-enter');void card.offsetWidth;if(!reduced)card.classList.add('track-enter');
  activeTitle=card.dataset.title||'ANNA STARNESS';
- await fade(audio,1,560);
+ await Promise.all([
+   fade(audio,1,2200),
+   ...others.map(other=>fade(other,0,2200))
+ ]);
+ others.forEach(other=>{other.pause();other.volume=1;resetUI(other);other.closest('.audio-card')?.classList.remove('track-exit');});
  }catch(error){try{audio.pause();}catch(_){}audio.volume=1;resetUI(audio);syncRec();console.error('Ошибка воспроизведения:',error);alert('Не удалось запустить трек. Проверь, что MP3-файл находится в папке audio и доступен на сайте.');}
 finally{buttons.forEach(b=>b.disabled=false);transitionBusy=false;syncRec();}
 }
