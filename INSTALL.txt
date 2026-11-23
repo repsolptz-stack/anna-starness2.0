@@ -1,0 +1,15 @@
+ANNA STARNESS 2.1 — SEO pack
+
+1. Upload robots.txt and sitemap.xml to the repository root (next to index.html).
+2. Open index.html and make these precise edits inside <head>:
+   - Keep the existing description, title, Open Graph title and description.
+   - Replace the existing line:
+       <meta property="og:image" content="./images/hero.jpg">
+     with the absolute URL version from index-head-seo-additions.txt.
+   - Insert the remaining lines from index-head-seo-additions.txt immediately before </head>.
+   - Do not add a second og:image tag; the replacement above avoids duplicates.
+3. Commit the changes to the main branch. GitHub Pages will publish them automatically.
+
+No visual sections, player logic, tracks, crossfade duration, colors or images are changed.
+The hero image preload is a performance hint, not an image conversion. Large image files are
+left untouched to avoid quality loss; WebP/AVIF conversion should be a separate checked step.
