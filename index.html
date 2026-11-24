@@ -784,8 +784,6 @@ $('#story-btn').addEventListener('click',async()=>{
     x.restore();
     x.textAlign='center';x.textBaseline='middle';x.fillStyle='#fff';x.font='500 32px Inter';
     x.fillText('ОТКРЫТЬ САЙТ  ↗',540,1450,560);
-    const siteLabel=new URL(siteUrl).host+new URL(siteUrl).pathname.replace(/\/$/,'');
-    x.font='400 25px Inter';x.fillStyle='#ffffffcc';x.fillText(siteLabel,540,1555,900);
     x.textBaseline='alphabetic';
 
     const blob=await new Promise(resolve=>c.toBlob(resolve,'image/jpeg',.92));
