@@ -190,9 +190,52 @@ body.audio-playing .mood-ambient{opacity:.9;animation:glow 4s ease-in-out infini
 .progress-container{height:8px;position:relative;flex:1;background:rgba(255,255,255,.14);border-radius:99px;cursor:pointer;touch-action:pan-y}
 .progress-bar{position:absolute;inset:0 auto 0 0;width:0;background:var(--accent);border-radius:99px;box-shadow:0 0 10px var(--glow);pointer-events:none}
 
-.music-actions{margin-top:4rem;display:flex;flex-direction:column;align-items:center;gap:1.75rem;text-align:center}
-.listen-all{display:inline-flex;align-items:center;gap:.75rem;font-size:.875rem;letter-spacing:.15em;text-transform:uppercase;border-bottom:1px solid #fff;padding-bottom:.5rem;text-decoration:none;transition:color .3s,border-color .3s}
-.listen-all:hover{color:var(--muted);border-color:var(--muted)}
+/* ============ MUSIC ACTIONS / STREAM PANEL ============ */
+.music-actions{margin-top:4rem;display:grid;gap:1.25rem}
+.stream-panel{
+  position:relative;overflow:hidden;
+  border:1px solid var(--hairline);border-radius:16px;
+  background:rgba(255,255,255,.03);
+  padding:2rem 1.5rem;display:flex;flex-direction:column;align-items:center;gap:1.75rem;text-align:center;
+}
+.stream-panel::before{
+  content:"";position:absolute;inset:auto -20% -60% -20%;height:120%;
+  background:radial-gradient(ellipse 60% 60% at 50% 100%,var(--ambient),transparent 70%);
+  pointer-events:none;
+}
+.stream-eyebrow{margin:0;font-size:.6875rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.stream-title{margin:0;font-size:1.75rem;font-weight:300}
+.stream-title em{font-style:italic}
+.stream-note{margin:0;max-width:24rem;font-size:.875rem;line-height:1.65;color:var(--muted);font-weight:300}
+
+.bandlink-btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.75rem;
+  min-height:56px;padding:0 2rem;border-radius:999px;
+  background:var(--accent);color:#fff;text-decoration:none;
+  font-size:.8125rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;
+  box-shadow:0 0 24px var(--glow);
+  transition:transform .3s cubic-bezier(.22,1,.36,1),box-shadow .3s,filter .3s;
+}
+.bandlink-btn:hover{filter:brightness(1.12);box-shadow:0 0 40px var(--glow)}
+.bandlink-btn:active{transform:scale(.97)}
+.bandlink-btn svg{width:1.25rem;height:1.25rem;flex:none}
+body.audio-playing .bandlink-btn{animation:pulse 2.4s ease-in-out infinite alternate}
+@keyframes pulse{to{box-shadow:0 0 48px var(--glow)}}
+
+.stream-platforms{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.75rem;position:relative;z-index:1}
+.stream-platforms a{
+  font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  text-decoration:none;padding:.5rem 0;position:relative;transition:color .3s;
+}
+.stream-platforms a::after{
+  content:"";position:absolute;left:0;bottom:.35rem;width:100%;height:1px;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .35s;
+}
+.stream-platforms a:hover{color:#fff}
+.stream-platforms a:hover::after{transform:scaleX(1)}
+
+@media(min-width:768px){.stream-title{font-size:2rem}}
+
 .story-btn{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.75rem 1.5rem;transition:border-color .3s,color .3s}
 .story-btn:hover{border-color:#fff}
 .story-btn:disabled{opacity:.5;cursor:wait}
@@ -211,9 +254,7 @@ body.audio-playing .mood-ambient{opacity:.9;animation:glow 4s ease-in-out infini
 .vk-btn:hover{filter:brightness(1.12);box-shadow:0 0 40px var(--glow)}
 .vk-btn:active{transform:scale(.97)}
 .vk-btn svg{width:1.25rem;height:1.25rem;flex:none}
-/* мягкий пульс, пока музыка играет — блок «дышит» вместе с сайтом */
 body.audio-playing .vk-btn{animation:pulse 2.4s ease-in-out infinite alternate}
-@keyframes pulse{to{box-shadow:0 0 48px var(--glow)}}
 .subscribe-note{margin:0;font-size:.6875rem;letter-spacing:.06em;color:var(--muted)}
 .subscribe-social{display:flex;justify-content:center;gap:2rem;margin-top:2.75rem;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .subscribe-social a{text-decoration:none;transition:color .3s}
@@ -264,6 +305,8 @@ body.audio-playing .cta-eq span{opacity:1;animation:eq .9s ease-in-out infinite 
   .mood-item{width:84vw}
   .subscribe{padding:5rem 1.25rem}
   .subscribe-social{gap:1.25rem;flex-wrap:wrap}
+  .stream-panel{padding:1.75rem 1.25rem;gap:1.5rem}
+  .stream-platforms{gap:.35rem 1.25rem}
 }
 @media(max-width:380px){
   .site-nav{gap:.15rem}
@@ -277,6 +320,7 @@ body.audio-playing .cta-eq span{opacity:1;animation:eq .9s ease-in-out infinite 
   .reveal{opacity:1;transform:none;filter:none}
   body.audio-playing .cta-eq span{animation:none;transform:scaleY(.6);opacity:1}
   body.audio-playing .vk-btn{animation:none}
+  body.audio-playing .bandlink-btn{animation:none}
 }
 </style>
 </head>
@@ -441,7 +485,22 @@ body.audio-playing .cta-eq span{opacity:1;animation:eq .9s ease-in-out infinite 
     </div>
 
     <div class="music-actions reveal">
-      <a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer" class="listen-all">Слушать на всех платформах ↗</a>
+      <div class="stream-panel">
+        <p class="stream-eyebrow">Где слушать</p>
+        <p class="font-serif stream-title">Слушай <em>везде</em></p>
+        <p class="stream-note">Треки доступны на всех стриминговых платформах. Выбирайте привычную — музыка одна и та же.</p>
+        <a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer" class="bandlink-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9h-2a7 7 0 1 1-7-7V3z"/><circle cx="12" cy="12" r="3.2"/></svg>
+          Открыть на всех платформах
+        </a>
+        <div class="stream-platforms">
+          <a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer">Spotify</a>
+          <a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer">Apple Music</a>
+          <a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer">Яндекс Музыка</a>
+          <a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer">VK Музыка</a>
+          <a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer">YouTube Music</a>
+        </div>
+      </div>
       <button id="story-btn" class="story-btn">↗ Сохранить в сторис</button>
     </div>
   </section>
