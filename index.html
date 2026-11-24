@@ -3,7 +3,7 @@
 <head>
 <!-- ANNA STARNESS 3.0: SEO / social sharing -->
 <link rel="canonical" href="https://repsolptz-stack.github.io/anna-starness2.0/">
-<link rel="preload" as="image" href="./images/hero.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="./images/hero.webp" type="image/webp" fetchpriority="high">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090909'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%238a1c24'/%3E%3C/svg%3E">
 <meta property="og:url" content="https://repsolptz-stack.github.io/anna-starness2.0/">
 <meta property="og:site_name" content="ANNA STARNESS">
@@ -404,11 +404,29 @@ body.audio-playing .cta-eq span{opacity:1;animation:eq .9s ease-in-out infinite 
       <h2 class="font-serif section-title">Выбери настроение</h2>
     </div>
     <div class="mood-scroller">
-      <button type="button" class="mood-item" data-theme="ether" aria-pressed="false">
+      <button type="button" class="mood-item" data-theme="<picture>
+  <source srcset="./images/water.webp" type="image/webp">
+  <img
+    src="./images/water.jpg"
+    alt="Вода — настроение Эфир"
+    loading="lazy"
+    decoding="async"
+    onerror="this.style.display='none'"
+  >
+</picture>" aria-pressed="false">
         <img src="./images/water.jpg" alt="Вода — настроение Эфир" loading="lazy" decoding="async" onerror="this.style.display='none'">
         <span class="font-serif mood-label">Эфир</span>
       </button>
-      <button type="button" class="mood-item" data-theme="fire" aria-pressed="false">
+      <button type="button" class="mood-item" data-theme="<picture>
+  <source srcset="./images/couch.webp" type="image/webp">
+  <img
+    src="./images/couch.jpg"
+    alt="Огонь — настроение"
+    loading="lazy"
+    decoding="async"
+    onerror="this.style.display='none'"
+  >
+</picture>" aria-pressed="false">
         <img src="./images/couch.jpg" alt="Огонь — настроение" loading="lazy" decoding="async" onerror="this.style.display='none'">
         <span class="font-serif mood-label">Огонь</span>
       </button>
@@ -767,7 +785,15 @@ $('#story-btn').addEventListener('click',async()=>{
     const c=document.createElement('canvas');c.width=1080;c.height=1920;
     const x=c.getContext('2d');
     x.fillStyle='#090909';x.fillRect(0,0,1080,1920);
-    const img=new Image();img.crossOrigin='anonymous';img.src='./images/hero.jpg';
+    const img=new Image();
+img.crossOrigin='anonymous';
+
+img.onerror=()=>{
+  img.onerror=null;
+  img.src='./images/hero.jpg';
+};
+
+img.src='./images/hero.webp';
     await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;});
     const scale=Math.max(1080/img.width,1920/img.height),w=img.width*scale,h=img.height*scale;
     x.drawImage(img,(1080-w)/2,(1920-h)/2,w,h);
