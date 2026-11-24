@@ -85,8 +85,16 @@ body.audio-playing .mood-ambient{opacity:.9;animation:glow 4s ease-in-out infini
 /* ============ HERO ============ */
 .hero{position:relative;width:100%;height:100svh;min-height:620px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .hero-bg{position:absolute;inset:0;overflow:hidden}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.78;animation:ken 30s ease-in-out infinite alternate}
-@keyframes ken{to{transform:scale(1.06)}}
+.hero-bg <picture>
+  <source srcset="./images/hero.webp" type="image/webp">
+  <img
+    src="./images/hero.jpg"
+    alt="Атмосферный портрет ANNA STARNESS"
+    fetchpriority="high"
+    decoding="async"
+    onerror="this.style.display='none'"
+  >
+</picture>
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.45),transparent 45%,var(--bg))}
 .hero-hud{position:absolute;inset:0;z-index:2;pointer-events:none}
 .hud-corner{position:absolute;width:24px;height:24px;border-color:rgba(255,255,255,.35);border-style:solid}
@@ -118,7 +126,16 @@ body.audio-playing .mood-ambient{opacity:.9;animation:glow 4s ease-in-out infini
 /* ============ MANIFESTO ============ */
 .manifesto{position:relative;padding:8rem 1.5rem;overflow:hidden}
 .manifesto-bg{position:absolute;inset:0}
-.manifesto-bg img{width:100%;height:100%;object-fit:cover;opacity:.25}
+.manifesto-bg <picture>
+  <source srcset="./images/forest.webp" type="image/webp">
+  <img
+    src="./images/forest.jpg"
+    alt=""
+    loading="lazy"
+    decoding="async"
+    onerror="this.style.display='none'"
+  >
+</picture>
 .manifesto-inner{position:relative;z-index:10;max-width:56rem;margin:0 auto;text-align:center}
 .manifesto-quote{margin:0;font-size:clamp(1.5rem,5vw,3.75rem);line-height:1.3;color:rgba(245,245,245,.92);font-style:italic}
 .manifesto-divider{margin-top:3rem;width:3rem;height:1px;background:rgba(255,255,255,.3);margin-inline:auto}
