@@ -555,6 +555,7 @@ body.audio-playing .cta-eq span{opacity:1;animation:eq .9s ease-in-out infinite 
 const $=(s,root=document)=>root.querySelector(s), $$=(s,root=document)=>[...root.querySelectorAll(s)];
 const audios=$$('audio'), cards=$$('.audio-card'), buttons=$$('.play-btn');
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const siteUrl='https://repsolptz-stack.github.io/anna-starness2.0/';
 let activeTitle='Безупречная любовь', transitionBusy=false, audioContext=null, raf=null, recSeconds=0, recTimer=null;
 const visualizers=new Map();
 
@@ -763,10 +764,34 @@ $('#story-btn').addEventListener('click',async()=>{
     x.font='500 42px Inter';x.fillText(activeTitle.toUpperCase(),540,1190);
     x.font='italic 34px "Playfair Display"';x.fillStyle='#ffffffbb';
     x.fillText('Песни о том, что скрыто за кадром',540,1270);
+
+    const accent=getComputedStyle(document.body).getPropertyValue('--accent').trim()||'#8a1c24';
+    const pill={left:225,top:1400,width:630,height:100,radius:50};
+    x.beginPath();
+    x.moveTo(pill.left+pill.radius,pill.top);
+    x.lineTo(pill.left+pill.width-pill.radius,pill.top);
+    x.arcTo(pill.left+pill.width,pill.top,pill.left+pill.width,pill.top+pill.radius,pill.radius);
+    x.lineTo(pill.left+pill.width,pill.top+pill.height-pill.radius);
+    x.arcTo(pill.left+pill.width,pill.top+pill.height,pill.left+pill.width-pill.radius,pill.top+pill.height,pill.radius);
+    x.lineTo(pill.left+pill.radius,pill.top+pill.height);
+    x.arcTo(pill.left,pill.top+pill.height,pill.left,pill.top+pill.height-pill.radius,pill.radius);
+    x.lineTo(pill.left,pill.top+pill.radius);
+    x.arcTo(pill.left,pill.top,pill.left+pill.radius,pill.top,pill.radius);
+    x.closePath();
+    x.save();
+    x.shadowColor=accent;x.shadowBlur=30;x.fillStyle=accent;x.fill();
+    x.shadowBlur=0;x.strokeStyle='rgba(255,255,255,.35)';x.lineWidth=2;x.stroke();
+    x.restore();
+    x.textAlign='center';x.textBaseline='middle';x.fillStyle='#fff';x.font='500 32px Inter';
+    x.fillText('ОТКРЫТЬ САЙТ  ↗',540,1450,560);
+    const siteLabel=new URL(siteUrl).host+new URL(siteUrl).pathname.replace(/\/$/,'');
+    x.font='400 25px Inter';x.fillStyle='#ffffffcc';x.fillText(siteLabel,540,1555,900);
+    x.textBaseline='alphabetic';
+
     const blob=await new Promise(resolve=>c.toBlob(resolve,'image/jpeg',.92));
     if(!blob)throw new Error('Canvas export failed');
     const file=new File([blob],'anna-starness-story.jpg',{type:'image/jpeg'});
-    if(navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'ANNA STARNESS',text:`Слушай «${activeTitle}» — ANNA STARNESS`});
+    if(navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'ANNA STARNESS',text:`Слушай «${activeTitle}» — ANNA STARNESS\n${siteUrl}`,url:siteUrl});
     else{const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='anna-starness-story.jpg';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   }catch(e){
     console.error(e);
