@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
-<head><!-- ANNA STARNESS 2.1: SEO / social sharing -->
+<html lang="ru">
+<head>
+<!-- ANNA STARNESS 3.0: SEO / social sharing -->
 <link rel="canonical" href="https://repsolptz-stack.github.io/anna-starness2.0/">
-<link rel="preload" as="image" href="https://repsolptz-stack.github.io/anna-starness2.0/images/hero.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="./images/hero.jpg" fetchpriority="high">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23090909'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%238a1c24'/%3E%3C/svg%3E">
 <meta property="og:url" content="https://repsolptz-stack.github.io/anna-starness2.0/">
 <meta property="og:site_name" content="ANNA STARNESS">
 <meta property="og:locale" content="ru_RU">
@@ -11,20 +13,15 @@
 <meta name="twitter:title" content="ANNA STARNESS — HER MUSIC. HER RULES.">
 <meta name="twitter:description" content="Песни о том, что скрыто за кадром. Слушайте музыку ANNA STARNESS.">
 <meta name="twitter:image" content="https://repsolptz-stack.github.io/anna-starness2.0/images/hero.jpg">
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "ANNA STARNESS",
   "url": "https://repsolptz-stack.github.io/anna-starness2.0/",
-  "sameAs": [
-    "https://vk.ru/annastarness",
-    "https://band.link/gho4i"
-  ]
+  "sameAs": ["https://vk.ru/annastarness", "https://band.link/gho4i"]
 }
 </script>
-<!-- End ANNA STARNESS 2.1 SEO -->
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -36,23 +33,44 @@
 <meta property="og:description" content="Песни о том, что скрыто за кадром.">
 <meta property="og:image" content="https://repsolptz-stack.github.io/anna-starness2.0/images/hero.jpg">
 <title>ANNA STARNESS — HER MUSIC. HER RULES.</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config={theme:{extend:{colors:{dark:'#0a0a0a',light:'#f5f5f5'},fontFamily:{sans:['Inter','sans-serif'],serif:['Playfair Display','serif']}}}};
-</script>
+
 <style>
-:root{--accent:#8a1c24;--glow:rgba(138,28,36,.65);--ambient:rgba(138,28,36,.12)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:5rem}
-body{margin:0;background:#0a0a0a;color:#f5f5f5;font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+/* ============ ROOT / RESET ============ */
+:root{
+  --accent:#8a1c24;
+  --glow:rgba(138,28,36,.65);
+  --ambient:rgba(138,28,36,.12);
+  --bg:#0a0a0a;
+  --fg:#f5f5f5;
+  --muted:#9ca3af;      /* мелкие подписи: поднят контраст */
+  --muted-strong:#c4c8cd;
+  --hairline:rgba(255,255,255,.12);
+}
 body.theme-ether{--accent:#5b859c;--glow:rgba(91,133,156,.7);--ambient:rgba(91,133,156,.15)}
 body.theme-fire{--accent:#b84a27;--glow:rgba(184,74,39,.7);--ambient:rgba(184,74,39,.15)}
-::selection{background:var(--accent);color:white}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:Inter,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--accent);color:#fff}
 a,button{-webkit-tap-highlight-color:transparent}
-button:focus-visible,a:focus-visible,[tabindex="0"]:focus-visible{outline:2px solid white;outline-offset:4px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,a:focus-visible,[tabindex="0"]:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.font-serif{font-family:"Playfair Display",Georgia,serif}
+main,header,footer,nav,.hero-content{position:relative}
+
+/* ============ FIXED OVERLAYS ============ */
 .top-progress{position:fixed;z-index:10000;top:0;left:0;height:2px;width:0;background:var(--accent);box-shadow:0 0 12px var(--glow)}
 .film-grain{position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .vignette{position:fixed;inset:0;z-index:9997;pointer-events:none;background:radial-gradient(circle,transparent 50%,rgba(0,0,0,.5) 150%)}
@@ -60,127 +78,371 @@ button:focus-visible,a:focus-visible,[tabindex="0"]:focus-visible{outline:2px so
 body.theme-ether .mood-ambient,body.theme-fire .mood-ambient{opacity:1}
 body.audio-playing .mood-ambient{opacity:.9;animation:glow 4s ease-in-out infinite alternate}
 @keyframes glow{to{filter:brightness(1.3)}}
-#main-content,footer,header,nav{position:relative}
+
+.skip-link{position:fixed;top:-4rem;left:1rem;z-index:10001;background:#f5f5f5;color:#090909;padding:.75rem 1.25rem;border-radius:999px;text-decoration:none;font-size:.8rem;transition:top .2s}
+.skip-link:focus{top:1rem}
+
+/* ============ HERO ============ */
+.hero{position:relative;width:100%;height:100svh;min-height:620px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
 .hero-bg{position:absolute;inset:0;overflow:hidden}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center;opacity:.78;animation:ken 30s ease-in-out infinite alternate}
 @keyframes ken{to{transform:scale(1.06)}}
-.hud-corner{position:absolute;width:24px;height:24px;border-color:#ffffff55;border-style:solid;z-index:2;pointer-events:none}
-.hud-tl{top:2rem;left:2rem;border-width:1px 0 0 1px}.hud-tr{top:2rem;right:2rem;border-width:1px 1px 0 0}
-.hud-bl{bottom:2rem;left:2rem;border-width:0 0 1px 1px}.hud-br{bottom:2rem;right:2rem;border-width:0 1px 1px 0}
-.site-nav{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:clamp(.8rem,2vw,2rem);white-space:nowrap}
-.site-nav a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#ffffff90;text-decoration:none}
-.site-nav a:hover{color:white}
-.hero-caption{border-left:1px solid var(--accent);padding-left:1rem}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.45),transparent 45%,var(--bg))}
+.hero-hud{position:absolute;inset:0;z-index:2;pointer-events:none}
+.hud-corner{position:absolute;width:24px;height:24px;border-color:rgba(255,255,255,.35);border-style:solid}
+.hud-tl{top:2rem;left:2rem;border-width:1px 0 0 1px}
+.hud-tr{top:2rem;right:2rem;border-width:1px 1px 0 0}
+.hud-bl{bottom:2rem;left:2rem;border-width:0 0 1px 1px}
+.hud-br{bottom:2rem;right:2rem;border-width:0 1px 1px 0}
+
+/* REC-пилюля живёт только в hero (absolute, а не fixed) — ничего не перекрывает */
+.rec-pill{position:absolute;top:1.15rem;left:50%;transform:translateX(-50%);z-index:30;pointer-events:none;display:flex;align-items:center;gap:.5rem;font-size:.625rem;letter-spacing:.2em;color:rgba(255,255,255,.6);background:rgba(0,0,0,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:.4rem .9rem;border-radius:999px;border:1px solid rgba(255,255,255,.12)}
+.rec-dot{width:6px;height:6px;border-radius:50%;background:rgba(220,38,38,.45);transition:background .3s,box-shadow .3s}
+.rec-dot.is-on{background:#ef4444;box-shadow:0 0 8px rgba(239,68,68,.8)}
+
+.nav{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:3.5rem 1.5rem 1.5rem}
+.brand{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
+.site-nav{display:flex;gap:.9rem;white-space:nowrap}
+.site-nav a{font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.62);text-decoration:none;min-height:40px;display:inline-flex;align-items:center;transition:color .3s}
+.site-nav a:hover{color:#fff}
+.nav-social{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;min-height:40px;display:inline-flex;align-items:center}
+
+.hero-content{position:relative;z-index:10;padding:0 1.5rem 6rem;width:100%;max-width:80rem;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start}
+.hero-caption{border-left:1px solid var(--accent);padding-left:1rem;margin-bottom:1.5rem;font-size:.625rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.hero-title{margin:0;font-size:15vw;line-height:.85;letter-spacing:-.03em;font-weight:500}
+.hero-title .line2{display:inline-block;font-style:italic;font-weight:300;padding-left:10vw}
+.hero-tagline{margin:2rem 0 0;font-size:.875rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted-strong);font-weight:300;max-width:28rem}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.6;pointer-events:none;font-size:.625rem;letter-spacing:.16em;text-transform:uppercase}
+.scroll-hint span+span{display:block;width:1px;height:2rem;background:rgba(255,255,255,.5)}
+
+/* ============ MANIFESTO ============ */
+.manifesto{position:relative;padding:8rem 1.5rem;overflow:hidden}
+.manifesto-bg{position:absolute;inset:0}
+.manifesto-bg img{width:100%;height:100%;object-fit:cover;opacity:.25}
+.manifesto-inner{position:relative;z-index:10;max-width:56rem;margin:0 auto;text-align:center}
+.manifesto-quote{margin:0;font-size:clamp(1.5rem,5vw,3.75rem);line-height:1.3;color:rgba(245,245,245,.92);font-style:italic}
+.manifesto-divider{margin-top:3rem;width:3rem;height:1px;background:rgba(255,255,255,.3);margin-inline:auto}
+
+/* ============ SECTIONS COMMON ============ */
+.eyebrow{margin:0;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.section-title{margin:.75rem 0 0;font-size:2.25rem;line-height:1.1}
+@media(min-width:768px){.section-title{font-size:3rem}}
+
+/* ============ MOODS ============ */
+.visuals{padding:5rem 0 8rem;overflow:hidden}
+.section-head{padding:0 1.5rem;margin-bottom:3rem}
+@media(min-width:768px){.section-head{padding:0 4rem}}
+.mood-scroller{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1rem;padding:0 1.5rem 2rem;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scroll-padding-inline:1.5rem}
+.mood-scroller::-webkit-scrollbar{display:none}
+.mood-item{position:relative;isolation:isolate;flex:none;width:84vw;height:60vh;scroll-snap-align:center;overflow:hidden;border:1px solid rgba(255,255,255,.1);border-radius:2px;text-align:left;transition:border-color .5s,box-shadow .5s}
+.mood-item img{width:100%;height:100%;object-fit:cover;transition:transform 1.5s}
+.mood-item:hover img{transform:scale(1.04)}
+.mood-item::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent 55%)}
+.mood-label{position:absolute;bottom:1.5rem;left:1.5rem;z-index:2;font-size:2.25rem;font-style:italic}
+.mood-item.ether-active{border-color:#5b859c;box-shadow:0 0 35px rgba(91,133,156,.27)}
+.mood-item.fire-active{border-color:#b84a27;box-shadow:0 0 35px rgba(184,74,39,.27)}
+.mood-hint{margin:1rem 0 0;text-align:center;font-size:.625rem;color:var(--muted);text-transform:uppercase;letter-spacing:.16em}
+@media(min-width:768px){.mood-scroller{gap:2rem;padding:0 4rem 2rem}.mood-item{width:40vw;height:75vh}}
+
+/* ============ MUSIC ============ */
+.music{padding:6rem 1.5rem;max-width:56rem;margin:0 auto}
+.music-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;border-bottom:1px solid var(--hairline);padding-bottom:1.5rem}
+.music-counter{font-size:.625rem;letter-spacing:.18em;color:var(--muted)}
+.audio-list{display:flex;flex-direction:column;gap:.5rem}
+
+.audio-card{position:relative;overflow:hidden;border-radius:10px;border-bottom:1px solid var(--hairline);padding:1.5rem .75rem;display:flex;flex-direction:column;transition:background .4s,box-shadow .5s,transform .4s,opacity .4s}
+.audio-card.is-playing{background:rgba(255,255,255,.03);box-shadow:0 0 30px var(--glow),inset 0 0 14px var(--glow);transform:translateX(2px)}
+.audio-card.is-playing::before{content:"";position:absolute;left:0;top:1.3rem;bottom:1.3rem;width:2px;background:var(--accent);box-shadow:0 0 10px var(--glow)}
+.track-enter{animation:enter .65s ease both}
+.track-exit{opacity:.35;filter:blur(4px);transition:opacity .6s,filter .6s}
+@keyframes enter{from{opacity:.5;transform:translateX(15px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+.track-row{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.track-main{display:flex;align-items:center;gap:1rem;min-width:0}
+@media(min-width:768px){.track-main{gap:1.5rem}.audio-card{padding:1.5rem 1rem}}
+
+.play-btn{width:44px;height:44px;flex:none;border:1px solid rgba(255,255,255,.4);border-radius:50%;display:grid;place-items:center;transition:transform .35s cubic-bezier(.22,1,.36,1),background-color .35s,color .35s,box-shadow .4s}
+.play-btn:hover{background:#f5f5f5;color:#090909}
+.play-btn:active{transform:scale(.93);transition-duration:.15s}
+.play-btn .pause-icon{display:none}
+.play-btn.is-playing .play-icon{display:none}
+.play-btn.is-playing .pause-icon{display:block}
+.play-btn.is-playing{background:#f5f5f5;color:#090909;box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 22%,transparent),0 0 20px var(--glow)}
+.play-btn svg{width:1rem;height:1rem}
+
+.track-info{min-width:0}
+.track-heading{display:flex;align-items:center;gap:.7rem;min-height:32px}
+.track-heading h3{margin:0;font-size:1.125rem;font-weight:300}
+@media(min-width:768px){.track-heading h3{font-size:1.5rem}}
+.track-desc{margin:.25rem 0 0;font-size:.8125rem;color:var(--muted);font-weight:300}
+
+/* волна: крупнее и читаемее */
+.track-waveform{display:flex;align-items:center;justify-content:center;gap:3px;width:110px;height:32px;flex:none;border-left:1px solid rgba(255,255,255,.15);padding-left:.75rem;opacity:.45;transition:opacity .3s}
+.track-waveform span{display:block;width:3px;height:26px;border-radius:8px;background:linear-gradient(to top,var(--accent),#fff);box-shadow:0 0 7px var(--glow);transform:scaleY(var(--wave-level,.12));transform-origin:center;opacity:var(--wave-opacity,.5)}
+.audio-card.is-playing .track-waveform{opacity:1}
+
+.download-btn{padding:.75rem;color:var(--muted);transition:color .3s;display:inline-flex}
+.download-btn:hover{color:#fff}
+.download-btn svg{width:1.15rem;height:1.15rem}
+
+.track-controls{display:flex;align-items:center;gap:.75rem;margin-top:1.25rem}
+.time-label{font-size:.625rem;color:var(--muted);font-variant-numeric:tabular-nums;width:2.5rem}
+.time-label.right{text-align:right}
+.progress-container{height:8px;position:relative;flex:1;background:rgba(255,255,255,.14);border-radius:99px;cursor:pointer;touch-action:pan-y}
+.progress-bar{position:absolute;inset:0 auto 0 0;width:0;background:var(--accent);border-radius:99px;box-shadow:0 0 10px var(--glow);pointer-events:none}
+
+.music-actions{margin-top:4rem;display:flex;flex-direction:column;align-items:center;gap:1.75rem;text-align:center}
+.listen-all{display:inline-flex;align-items:center;gap:.75rem;font-size:.875rem;letter-spacing:.15em;text-transform:uppercase;border-bottom:1px solid #fff;padding-bottom:.5rem;text-decoration:none;transition:color .3s,border-color .3s}
+.listen-all:hover{color:var(--muted);border-color:var(--muted)}
+.story-btn{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.75rem 1.5rem;transition:border-color .3s,color .3s}
+.story-btn:hover{border-color:#fff}
+.story-btn:disabled{opacity:.5;cursor:wait}
+
+/* ============ TOAST ============ */
+.toast{position:fixed;bottom:calc(6rem + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,1rem);z-index:10002;max-width:min(24rem,calc(100% - 2rem));background:rgba(15,15,15,.92);border:1px solid var(--hairline);border-left:2px solid var(--accent);border-radius:10px;padding:.9rem 1.1rem;font-size:.8125rem;color:var(--muted-strong);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ============ FOOTER ============ */
+.site-footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,.05);margin-top:2.5rem}
+.footer-inner{max-width:80rem;margin:0 auto;display:flex;flex-direction:column;justify-content:space-between;align-items:center;gap:2rem}
+.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.footer-links a{text-decoration:none;transition:color .3s}
+.footer-links a:hover{color:#fff}
+.copyright{font-size:.75rem;letter-spacing:.08em;color:#7a7a7a}
+@media(min-width:768px){.site-footer{padding:6rem 1.5rem}.footer-inner{flex-direction:row}}
+
+/* ============ STICKY CTA (тёмная) ============ */
+#sticky-cta{position:fixed;bottom:calc(1rem + env(safe-area-inset-bottom));left:50%;transform:translate(-50%,6rem);width:calc(100% - 2rem);max-width:24rem;z-index:50;opacity:0;pointer-events:none;transition:opacity .5s ease,transform .5s cubic-bezier(.22,1,.36,1)}
+#sticky-cta.is-visible{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.sticky-cta-link{display:flex;align-items:center;justify-content:center;gap:.75rem;min-height:52px;padding:0 1.25rem;border-radius:999px;background:rgba(12,12,12,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);box-shadow:0 8px 32px rgba(0,0,0,.55),0 0 24px var(--ambient);color:var(--fg);text-decoration:none;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;transition:border-color .3s,box-shadow .3s,transform .3s}
+.sticky-cta-link:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(0,0,0,.6),0 0 34px var(--glow)}
+.sticky-cta-link:active{transform:scale(.97)}
+.sticky-cta-link:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.sticky-cta-icon{width:28px;height:28px;flex:none;border-radius:50%;background:var(--accent);display:grid;place-items:center;box-shadow:0 0 12px var(--glow)}
+.sticky-cta-icon svg{width:10px;height:10px;color:#fff;margin-left:1px}
+.cta-eq{display:flex;align-items:flex-end;gap:2px;height:12px;flex:none}
+.cta-eq span{width:2px;height:100%;border-radius:2px;background:var(--accent);opacity:.35;transform:scaleY(.25);transform-origin:bottom}
+body.audio-playing .cta-eq span{opacity:1;animation:eq .9s ease-in-out infinite alternate}
+.cta-eq span:nth-child(2){animation-delay:.15s}
+.cta-eq span:nth-child(3){animation-delay:.3s}
+@keyframes eq{from{transform:scaleY(.25)}to{transform:scaleY(1)}}
+
+/* ============ REVEAL ============ */
 .reveal{opacity:0;transform:translateY(18px);filter:blur(6px);transition:opacity 1s,transform 1s,filter 1s}
 .reveal.active{opacity:1;transform:none;filter:none}
-.gallery-item{position:relative;isolation:isolate;border:1px solid #ffffff18;transition:border-color .5s,box-shadow .5s,transform .5s}
-.gallery-item img{transition:transform 1.5s}
-.gallery-item:hover img{transform:scale(1.04)}
-.gallery-item.ether-active{border-color:#5b859c;box-shadow:0 0 35px #5b859c44}
-.gallery-item.fire-active{border-color:#b84a27;box-shadow:0 0 35px #b84a2744}
-.audio-card{position:relative;overflow:hidden;border-radius:10px;transition:background .4s,box-shadow .5s,transform .4s,opacity .4s}
-.audio-card.is-playing{background:#ffffff08;box-shadow:0 0 30px var(--glow),inset 0 0 14px var(--glow);transform:translateX(2px)}
-.audio-card.is-playing:before{content:"";position:absolute;left:0;top:1.3rem;bottom:1.3rem;width:2px;background:var(--accent);box-shadow:0 0 10px var(--glow)}
-.play-btn{width:44px;height:44px;flex:none;border:1px solid #ffffff55;border-radius:50%;display:grid;place-items:center;background:transparent;color:white;transition:all .25s}
-.play-btn:hover{background:#f5f5f5;color:#090909}
-.play-btn .pause-icon{display:none}.play-btn.is-playing .play-icon{display:none}.play-btn.is-playing .pause-icon{display:block}
-.play-btn.is-playing{background:#f5f5f5;color:#090909;box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 22%,transparent),0 0 20px var(--glow)}
-.play-btn{transition:transform .35s cubic-bezier(.22,1,.36,1),background-color .35s ease,color .35s ease,box-shadow .4s ease;transform:scale(1);-webkit-tap-highlight-color:transparent}
-.play-btn:active{transform:scale(.93);transition-duration:.15s}
-.track-heading{display:flex;align-items:center;gap:.7rem;min-height:32px}
-.track-waveform{display:flex;align-items:center;justify-content:center;gap:2px;width:84px;height:32px;flex:none;border-left:1px solid #ffffff22;padding-left:9px;opacity:.5;transition:opacity .3s}
-.track-waveform span{display:block;width:2px;height:26px;border-radius:8px;background:linear-gradient(to top,var(--accent),#ffffff);box-shadow:0 0 7px var(--glow);transform:scaleY(var(--wave-level,.12));transform-origin:center;opacity:var(--wave-opacity,.5)}
-.audio-card.is-playing .track-waveform{opacity:1}
-.progress-container{height:8px;position:relative;flex:1;background:#ffffff20;border-radius:99px;cursor:pointer;touch-action:pan-y}
-.progress-bar{position:absolute;inset:0 auto 0 0;width:0;background:var(--accent);border-radius:99px;box-shadow:0 0 10px var(--glow);pointer-events:none}
-.track-enter{animation:enter .65s ease both}
-@keyframes enter{from{opacity:.5;transform:translateX(15px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
-#sticky-cta{padding-bottom:env(safe-area-inset-bottom)}
-#sticky-cta a{background:#f5f5f5;color:#090909}
-@media(max-width:767px){.site-nav{position:static;transform:none;margin-left:auto;margin-right:.7rem;gap:.55rem}.site-nav a{font-size:8px;letter-spacing:.06em}.hud-tl{top:1rem;left:1rem}.hud-tr{top:1rem;right:1rem}.hud-bl{bottom:1rem;left:1rem}.hud-br{bottom:1rem;right:1rem}.gallery-item{min-width:84vw}.audio-card{padding-left:.2rem;padding-right:.2rem}body{padding-bottom:env(safe-area-inset-bottom)}}
 
-/* Mobile refinement: larger touch targets, comfortable seeking and safe-area spacing. */
+/* ============ MOBILE REFINEMENT ============ */
 @media(max-width:767px){
- .site-nav{gap:.35rem}
- .site-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:.35rem .2rem;font-size:9px;letter-spacing:.045em}
- .play-btn{width:48px;height:48px;transition:transform .35s cubic-bezier(.22,1,.36,1),background-color .35s ease,color .35s ease,box-shadow .4s ease}
- .play-btn:active{transform:scale(.95);transition-duration:.15s}
- .progress-container{height:12px}
- .progress-container:after{content:"";position:absolute;left:0;right:0;top:-12px;bottom:-12px}
- .audio-card{min-width:0}
- #sticky-cta{bottom:calc(1rem + env(safe-area-inset-bottom));width:calc(100% - 2rem);max-width:24rem}
- #sticky-cta a{min-height:52px;padding:1rem}
- #visuals .flex.overflow-x-auto{scroll-padding-inline:1.25rem;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  .nav{padding:3.25rem 1rem 1rem}
+  .site-nav{gap:.35rem}
+  .site-nav a{font-size:.5625rem;letter-spacing:.045em;padding:.35rem .2rem}
+  .play-btn{width:48px;height:48px}
+  .progress-container{height:12px}
+  .progress-container::after{content:"";position:absolute;left:0;right:0;top:-12px;bottom:-12px}
+  .track-waveform{width:84px;gap:2px}
+  .mood-item{width:84vw}
 }
 @media(max-width:380px){
- .site-nav{gap:.15rem;margin-right:.35rem}
- .site-nav a{font-size:8px;padding-inline:.12rem;letter-spacing:.02em}
- nav[aria-label="Основная навигация"]{padding-left:1rem;padding-right:1rem}
- .audio-card h3{font-size:1rem;line-height:1.35}
- .audio-card .flex.items-center.gap-4{gap:.65rem}
- .progress-container{min-width:0}
+  .site-nav{gap:.15rem}
+  .site-nav a{font-size:.5rem;padding-inline:.12rem;letter-spacing:.02em}
+  .track-heading h3{font-size:1rem;line-height:1.35}
+  .track-waveform{display:none}
 }
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none;filter:none}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none;filter:none}
+  body.audio-playing .cta-eq span{animation:none;transform:scaleY(.6);opacity:1}
+}
 </style>
 </head>
-<body class="antialiased">
-<a href="#main-content" class="fixed -top-20 focus:top-4 left-4 z-[10001] bg-white text-black px-4 py-3 rounded-full">Перейти к содержанию</a>
-<div class="top-progress" id="top-progress"></div><div class="film-grain"></div><div class="vignette"></div><div class="mood-ambient"></div>
-<div class="fixed top-5 left-1/2 -translate-x-1/2 z-40 pointer-events-none flex items-center gap-2 font-mono text-[10px] tracking-[.2em] text-white/45 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10"><span id="rec-dot" class="w-1.5 h-1.5 rounded-full bg-red-600/50"></span><span>REC</span><span id="timecode">00:00:00</span></div>
+<body>
+<a href="#main-content" class="skip-link">Перейти к содержанию</a>
 
-<header id="top" class="relative h-[100svh] min-h-[620px] w-full flex flex-col justify-between overflow-hidden">
- <div class="hero-bg"><img src="./images/hero.jpg" alt="Атмосферный портрет ANNA STARNESS" onerror="this.style.display='none'"></div>
- <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-dark"></div>
- <div class="absolute inset-0 z-20 pointer-events-none"><div class="hud-corner hud-tl"></div><div class="hud-corner hud-tr"></div><div class="hud-corner hud-bl"></div><div class="hud-corner hud-br"></div></div>
- <nav class="relative z-10 flex justify-between items-center p-6 md:p-10 pt-14" aria-label="Основная навигация">
-  <a href="#top" class="text-sm tracking-[.2em] uppercase" aria-label="Наверх">AS</a>
-  <div class="site-nav"><a href="#manifesto">Манифест</a><a href="#visuals">Эстетика</a><a href="#music">Музыка</a></div>
-  <a href="https://vk.ru/annastarness" target="_blank" rel="noopener noreferrer" class="text-xs tracking-widest uppercase">VK</a>
- </nav>
- <div class="relative z-10 px-6 pb-24 md:pb-32 md:px-16 flex flex-col items-start w-full max-w-7xl mx-auto">
-  <p class="hero-caption mb-6 text-[10px] tracking-[.28em] uppercase text-white/55">Independent artist · Official website</p>
-  <h1 class="font-serif text-[15vw] md:text-[9vw] leading-[.85] tracking-tighter">ANNA<br><span class="italic font-light pl-[10vw] md:pl-[15vw]">Starness</span></h1>
-  <p class="mt-8 text-sm md:text-base tracking-[.15em] uppercase text-gray-300 font-light max-w-md">Песни о том, что скрыто за кадром</p>
- </div>
- <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-60 pointer-events-none"><span class="text-[10px] tracking-widest uppercase">Скролл</span><span class="block w-px h-8 bg-white/50"></span></div>
+<div class="top-progress" id="top-progress"></div>
+<div class="film-grain"></div>
+<div class="vignette"></div>
+<div class="mood-ambient"></div>
+
+<!-- HERO. Совет: сгенерируйте WebP-версии картинок и оберните в <picture><source type="image/webp"> -->
+<header id="top" class="hero">
+  <div class="hero-bg">
+    <img src="./images/hero.jpg" alt="Атмосферный портрет ANNA STARNESS" decoding="async" onerror="this.style.display='none'">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-hud">
+    <div class="hud-corner hud-tl"></div><div class="hud-corner hud-tr"></div>
+    <div class="hud-corner hud-bl"></div><div class="hud-corner hud-br"></div>
+  </div>
+
+  <div class="rec-pill" aria-hidden="true">
+    <span class="rec-dot" id="rec-dot"></span><span>REC</span><span id="timecode">00:00:00</span>
+  </div>
+
+  <nav class="nav" aria-label="Основная навигация">
+    <a href="#top" class="brand" aria-label="Наверх">AS</a>
+    <div class="site-nav">
+      <a href="#manifesto">Манифест</a>
+      <a href="#visuals">Эстетика</a>
+      <a href="#music">Музыка</a>
+    </div>
+    <a href="https://vk.ru/annastarness" target="_blank" rel="noopener noreferrer" class="nav-social">VK</a>
+  </nav>
+
+  <div class="hero-content">
+    <p class="hero-caption">Independent artist · Official website</p>
+    <h1 class="font-serif hero-title">ANNA<br><span class="line2">Starness</span></h1>
+    <p class="hero-tagline">Песни о том, что скрыто за кадром</p>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Скролл</span><span></span>
+  </div>
 </header>
 
 <main id="main-content">
-<section id="manifesto" class="relative py-32 md:py-48 px-6 md:px-16 overflow-hidden">
- <div class="absolute inset-0"><img src="./images/forest.jpg" alt="" class="w-full h-full object-cover opacity-25" loading="lazy" onerror="this.style.display='none'"></div>
- <div class="relative z-10 max-w-4xl mx-auto text-center"><p class="reveal font-serif text-2xl md:text-5xl lg:text-6xl leading-[1.3] text-light/90 italic">«Я не создаю контент. Я создаю настроение, в котором ты остаёшься наедине с собой».</p><div class="reveal mt-12 w-12 h-px bg-white/30 mx-auto"></div></div>
-</section>
 
-<section id="visuals" class="py-20 md:py-32 overflow-hidden">
- <div class="px-6 md:px-16 mb-12 reveal"><p class="text-xs tracking-[.2em] uppercase text-gray-400">Визуальные состояния</p><h2 class="font-serif text-4xl md:text-5xl mt-3">Выбери настроение</h2></div>
- <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 md:gap-8 px-6 md:px-16 pb-8">
-  <button type="button" class="gallery-item min-w-[84vw] md:min-w-[40vw] h-[60vh] md:h-[75vh] snap-center group overflow-hidden rounded-sm text-left" data-theme="ether" aria-pressed="false"><img src="./images/water.jpg" alt="Вода — настроение Эфир" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'"><span class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></span><span class="absolute bottom-6 left-6 font-serif text-4xl italic">Эфир</span></button>
-  <button type="button" class="gallery-item min-w-[84vw] md:min-w-[40vw] h-[60vh] md:h-[75vh] snap-center group overflow-hidden rounded-sm text-left" data-theme="fire" aria-pressed="false"><img src="./images/couch.jpg" alt="Огонь — настроение" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'"><span class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></span><span class="absolute bottom-6 left-6 font-serif text-4xl italic">Огонь</span></button>
- </div>
- <p class="text-center mt-4 text-[10px] text-gray-500 uppercase tracking-widest">Нажми на фото, чтобы изменить свет сайта</p>
-</section>
+  <section id="manifesto" class="manifesto">
+    <div class="manifesto-bg">
+      <img src="./images/forest.jpg" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'">
+    </div>
+    <div class="manifesto-inner">
+      <p class="reveal font-serif manifesto-quote">«Я не создаю контент. Я создаю настроение, в котором ты остаёшься наедине с собой».</p>
+      <div class="reveal manifesto-divider"></div>
+    </div>
+  </section>
 
-<section id="music" class="py-24 md:py-32 px-6 md:px-16 max-w-4xl mx-auto">
- <div class="reveal flex justify-between items-end mb-12 border-b border-white/10 pb-6"><div><p class="text-xs tracking-[.2em] uppercase text-gray-400 mb-3">ANNA STARNESS · AUDIO</p><h2 class="font-serif text-4xl md:text-5xl">Треки</h2></div><span class="text-[10px] text-white/35 tracking-widest">01 — 03</span></div>
- <div class="flex flex-col gap-2" id="track-list">
-  <article class="audio-card reveal flex flex-col py-6 px-4 border-b border-white/10" data-track="track1" data-title="Безупречная любовь">
-   <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-4 md:gap-6 min-w-0"><button class="play-btn" data-play="track1" aria-label="Воспроизвести Безупречная любовь"><svg class="play-icon w-4 h-4 ml-1" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><svg class="pause-icon w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button><div class="min-w-0"><div class="track-heading"><h3 class="text-lg md:text-2xl font-light">Безупречная любовь</h3></div><p class="mt-1 text-xs md:text-sm text-gray-400 font-light">Тихий пульс близости и честность без лишних слов.</p></div></div><a href="./audio/track1.mp3" download aria-label="Скачать трек Безупречная любовь" class="p-3 text-gray-500 hover:text-white">↓</a></div>
-   <div class="flex items-center gap-3 mt-5"><span class="text-[10px] text-gray-500 font-mono current-time w-8">0:00</span><div class="progress-container" role="slider" tabindex="0" aria-label="Позиция трека Безупречная любовь" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar"></div></div><span class="text-[10px] text-gray-500 font-mono duration w-8 text-right">0:00</span></div><audio id="audio-track1" src="./audio/track1.mp3" preload="metadata"></audio>
-  </article>
-  <article class="audio-card reveal flex flex-col py-6 px-4 border-b border-white/10" data-track="track2" data-title="Милфы в толпе">
-   <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-4 md:gap-6 min-w-0"><button class="play-btn" data-play="track2" aria-label="Воспроизвести Милфы в толпе"><svg class="play-icon w-4 h-4 ml-1" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><svg class="pause-icon w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button><div class="min-w-0"><div class="track-heading"><h3 class="text-lg md:text-2xl font-light">Милфы в толпе</h3></div><p class="mt-1 text-xs md:text-sm text-gray-400 font-light">Дерзкий взгляд сквозь шум и чужие сценарии.</p></div></div><a href="./audio/track2.mp3" download aria-label="Скачать трек Милфы в толпе" class="p-3 text-gray-500 hover:text-white">↓</a></div>
-   <div class="flex items-center gap-3 mt-5"><span class="text-[10px] text-gray-500 font-mono current-time w-8">0:00</span><div class="progress-container" role="slider" tabindex="0" aria-label="Позиция трека Милфы в толпе" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar"></div></div><span class="text-[10px] text-gray-500 font-mono duration w-8 text-right">0:00</span></div><audio id="audio-track2" src="./audio/track2.mp3" preload="metadata"></audio>
-  </article>
-  <article class="audio-card reveal flex flex-col py-6 px-4 border-b border-white/10" data-track="track3" data-title="Конверты">
-   <div class="flex items-center justify-between gap-3"><div class="flex items-center gap-4 md:gap-6 min-w-0"><button class="play-btn" data-play="track3" aria-label="Воспроизвести Конверты"><svg class="play-icon w-4 h-4 ml-1" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><svg class="pause-icon w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button><div class="min-w-0"><div class="track-heading"><h3 class="text-lg md:text-2xl font-light">Конверты</h3></div><p class="mt-1 text-xs md:text-sm text-gray-400 font-light">Неотправленные письма и мысли, которые остаются до утра.</p></div></div><a href="./audio/track3.mp3" download aria-label="Скачать трек Конверты" class="p-3 text-gray-500 hover:text-white">↓</a></div>
-   <div class="flex items-center gap-3 mt-5"><span class="text-[10px] text-gray-500 font-mono current-time w-8">0:00</span><div class="progress-container" role="slider" tabindex="0" aria-label="Позиция трека Конверты" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar"></div></div><span class="text-[10px] text-gray-500 font-mono duration w-8 text-right">0:00</span></div><audio id="audio-track3" src="./audio/track3.mp3" preload="metadata"></audio>
-  </article>
- </div>
- <div class="mt-16 text-center reveal flex flex-col items-center gap-7"><a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 text-sm tracking-[.15em] uppercase border-b border-white pb-2 hover:text-gray-400">Слушать на всех платформах ↗</a><button id="story-btn" class="text-xs tracking-[.2em] uppercase text-white/80 border border-white/25 rounded-full px-6 py-3 hover:border-white transition-all">↗ Сохранить в сторис</button></div>
-</section>
+  <section id="visuals" class="visuals">
+    <div class="section-head reveal">
+      <p class="eyebrow">Визуальные состояния</p>
+      <h2 class="font-serif section-title">Выбери настроение</h2>
+    </div>
+    <div class="mood-scroller">
+      <button type="button" class="mood-item" data-theme="ether" aria-pressed="false">
+        <img src="./images/water.jpg" alt="Вода — настроение Эфир" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        <span class="font-serif mood-label">Эфир</span>
+      </button>
+      <button type="button" class="mood-item" data-theme="fire" aria-pressed="false">
+        <img src="./images/couch.jpg" alt="Огонь — настроение" loading="lazy" decoding="async" onerror="this.style.display='none'">
+        <span class="font-serif mood-label">Огонь</span>
+      </button>
+    </div>
+    <p class="mood-hint">Нажми на фото, чтобы изменить свет сайта</p>
+  </section>
+
+  <section id="music" class="music">
+    <div class="reveal music-head">
+      <div>
+        <p class="eyebrow" style="margin-bottom:.75rem">ANNA STARNESS · AUDIO</p>
+        <h2 class="font-serif section-title" style="margin-top:0">Треки</h2>
+      </div>
+      <span class="music-counter">01 — 03</span>
+    </div>
+
+    <div class="audio-list" id="track-list">
+
+      <article class="audio-card reveal" data-track="track1" data-title="Безупречная любовь">
+        <div class="track-row">
+          <div class="track-main">
+            <button class="play-btn" data-play="track1" aria-label="Воспроизвести Безупречная любовь">
+              <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="track-info">
+              <div class="track-heading"><h3>Безупречная любовь</h3></div>
+              <p class="track-desc">Тихий пульс близости и честность без лишних слов.</p>
+            </div>
+          </div>
+          <a href="./audio/track1.mp3" download aria-label="Скачать трек Безупречная любовь" class="download-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+          </a>
+        </div>
+        <div class="track-controls">
+          <span class="time-label current-time">0:00</span>
+          <div class="progress-container" role="slider" tabindex="0" aria-label="Позиция трека Безупречная любовь" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar"></div></div>
+          <span class="time-label right duration">0:00</span>
+        </div>
+        <audio id="audio-track1" src="./audio/track1.mp3" preload="metadata"></audio>
+      </article>
+
+      <article class="audio-card reveal" data-track="track2" data-title="Милфы в толпе">
+        <div class="track-row">
+          <div class="track-main">
+            <button class="play-btn" data-play="track2" aria-label="Воспроизвести Милфы в толпе">
+              <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="track-info">
+              <div class="track-heading"><h3>Милфы в толпе</h3></div>
+              <p class="track-desc">Дерзкий взгляд сквозь шум и чужие сценарии.</p>
+            </div>
+          </div>
+          <a href="./audio/track2.mp3" download aria-label="Скачать трек Милфы в толпе" class="download-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+          </a>
+        </div>
+        <div class="track-controls">
+          <span class="time-label current-time">0:00</span>
+          <div class="progress-container" role="slider" tabindex="0" aria-label="Позиция трека Милфы в толпе" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar"></div></div>
+          <span class="time-label right duration">0:00</span>
+        </div>
+        <audio id="audio-track2" src="./audio/track2.mp3" preload="metadata"></audio>
+      </article>
+
+      <article class="audio-card reveal" data-track="track3" data-title="Конверты">
+        <div class="track-row">
+          <div class="track-main">
+            <button class="play-btn" data-play="track3" aria-label="Воспроизвести Конверты">
+              <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="track-info">
+              <div class="track-heading"><h3>Конверты</h3></div>
+              <p class="track-desc">Неотправленные письма и мысли, которые остаются до утра.</p>
+            </div>
+          </div>
+          <a href="./audio/track3.mp3" download aria-label="Скачать трек Конверты" class="download-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+          </a>
+        </div>
+        <div class="track-controls">
+          <span class="time-label current-time">0:00</span>
+          <div class="progress-container" role="slider" tabindex="0" aria-label="Позиция трека Конверты" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar"></div></div>
+          <span class="time-label right duration">0:00</span>
+        </div>
+        <audio id="audio-track3" src="./audio/track3.mp3" preload="metadata"></audio>
+      </article>
+
+    </div>
+
+    <div class="music-actions reveal">
+      <a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer" class="listen-all">Слушать на всех платформах ↗</a>
+      <button id="story-btn" class="story-btn">↗ Сохранить в сторис</button>
+    </div>
+  </section>
+
 </main>
-<footer class="py-16 md:py-24 px-6 border-t border-white/5 mt-10"><div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8"><div class="flex flex-wrap justify-center gap-8 text-sm tracking-widest uppercase text-gray-400"><a href="https://vk.ru/annastarness" target="_blank" rel="noopener noreferrer">VK</a><a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer">Bandlink</a><a href="mailto:hello@annastarness.ru">Контакты</a></div><div class="text-xs text-gray-600 tracking-wider">© 2024–2026 ANNA STARNESS. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</div></div></footer>
-<div id="sticky-cta" class="fixed bottom-5 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-sm z-50 opacity-0 translate-y-28 pointer-events-none transition-all duration-500"><a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-3 w-full py-4 rounded-full font-medium tracking-widest uppercase text-sm shadow-xl">▶ Слушать ANNA STARNESS</a></div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="https://vk.ru/annastarness" target="_blank" rel="noopener noreferrer">VK</a>
+      <a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer">Bandlink</a>
+      <a href="mailto:hello@annastarness.ru">Контакты</a>
+    </div>
+    <div class="copyright">© 2024–2026 ANNA STARNESS. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</div>
+  </div>
+</footer>
+
+<div id="sticky-cta">
+  <a href="https://band.link/gho4i" target="_blank" rel="noopener noreferrer"
+     class="sticky-cta-link" aria-label="Слушать ANNA STARNESS на всех платформах">
+    <span class="cta-eq" aria-hidden="true"><span></span><span></span><span></span></span>
+    <span class="sticky-cta-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+    </span>
+    Слушать ANNA STARNESS
+  </a>
+</div>
 
 <script>
 (() => {
@@ -190,44 +452,222 @@ const audios=$$('audio'), cards=$$('.audio-card'), buttons=$$('.play-btn');
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 let activeTitle='Безупречная любовь', transitionBusy=false, audioContext=null, raf=null, recSeconds=0, recTimer=null;
 const visualizers=new Map();
-const formatTime=n=>Number.isFinite(n)?`${Math.floor(n/60)}:${String(Math.floor(n%60)).padStart(2,'0')}`:'0:00';
-function updateRec(){const h=String(Math.floor(recSeconds/3600)).padStart(2,'0'),m=String(Math.floor(recSeconds%3600/60)).padStart(2,'0'),s=String(recSeconds%60).padStart(2,'0');$('#timecode').textContent=`${h}:${m}:${s}`;}
-function syncRec(){const playing=audios.some(a=>!a.paused&&!a.ended);document.body.classList.toggle('audio-playing',playing);$('#rec-dot').classList.toggle('bg-red-500',playing);$('#rec-dot').classList.toggle('bg-red-600/50',!playing);if(playing&&!recTimer)recTimer=setInterval(()=>{recSeconds++;updateRec()},1000);if(!playing&&recTimer){clearInterval(recTimer);recTimer=null;}}
-function resetUI(audio){const card=audio.closest('.audio-card'),btn=$(`[data-play="${audio.id.replace('audio-','')}"]`);card?.classList.remove('is-playing');btn?.classList.remove('is-playing');if(btn)btn.setAttribute('aria-label',`Воспроизвести ${card?.dataset.title||''}`);}
-function makeVisualizer(audio,card){const wave=document.createElement('div');wave.className='track-waveform';wave.setAttribute('aria-hidden','true');for(let i=0;i<24;i++)wave.append(document.createElement('span'));$('.track-heading',card).append(wave);const item={audio,bars:[...wave.children],analyser:null,data:null,phase:Math.random()*6};visualizers.set(audio,item);return item;}
-function connectVisualizer(audio,item){if(item.analyser||item.failed)return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC){item.failed=true;return;}audioContext ||= new AC();const source=audioContext.createMediaElementSource(audio),analyser=audioContext.createAnalyser();analyser.fftSize=256;analyser.smoothingTimeConstant=.82;source.connect(analyser);analyser.connect(audioContext.destination);item.analyser=analyser;item.data=new Uint8Array(analyser.frequencyBinCount);}catch(e){item.failed=true;console.info('Waveform fallback:',e);}}
-function drawWaves(){let playing=false;visualizers.forEach(item=>{if(item.audio.paused||item.audio.ended)return;playing=true;if(item.analyser&&item.data&&audioContext?.state==='running'){item.analyser.getByteFrequencyData(item.data);item.bars.forEach((bar,i)=>{const p=i/(item.bars.length-1),bin=Math.min(item.data.length-1,Math.floor(1+Math.pow(p,1.6)*(item.data.length-2))),v=(item.data[bin]*.7+item.data[Math.min(bin+1,item.data.length-1)]*.3)/255,level=Math.max(.09,Math.min(1,Math.pow(v,.8)));bar.style.setProperty('--wave-level',level);bar.style.setProperty('--wave-opacity',.4+level*.6);});}else{const t=performance.now()/1000;item.bars.forEach((bar,i)=>{const level=.12+Math.abs(Math.sin(t*3+i*.48+item.phase))*.65+Math.abs(Math.sin(t*1.8-i*.3))*.2;bar.style.setProperty('--wave-level',Math.min(1,level));bar.style.setProperty('--wave-opacity',.45+Math.min(1,level)*.55);});}});if(playing)raf=requestAnimationFrame(drawWaves);else raf=null;}
-function startWaves(){if(!raf)raf=requestAnimationFrame(drawWaves);}
-// One cancellable fade job per audio element: replacing a fade always settles the previous promise.
-const fadeJobs=new WeakMap();
-function fade(audio,target,duration=420){const previous=fadeJobs.get(audio);if(previous){cancelAnimationFrame(previous.raf);previous.finish();}return new Promise(resolve=>{const job={raf:0,finish:()=>{if(fadeJobs.get(audio)===job)fadeJobs.delete(audio);resolve();}};fadeJobs.set(audio,job);const from=audio.volume,start=performance.now(),ms=reduced?0:Math.max(0,duration);function frame(now){if(fadeJobs.get(audio)!==job)return;const p=ms===0?1:Math.min(1,(now-start)/ms),ease=p*p*(3-2*p);audio.volume=Math.max(0,Math.min(1,from+(target-from)*ease));if(p<1)job.raf=requestAnimationFrame(frame);else job.finish();}job.raf=requestAnimationFrame(frame);});}
-function setPlayingUI(audio){const card=audio.closest('.audio-card'),btn=$(`[data-play="${audio.id.replace('audio-','')}"]`);card?.classList.add('is-playing');btn?.classList.add('is-playing');if(btn)btn.setAttribute('aria-label',`Пауза: ${card?.dataset.title||''}`);syncRec();startWaves();}
-async function toggleTrack(id){if(transitionBusy)return;const audio=$(`#audio-${id}`),card=audio?.closest('.audio-card');if(!audio||!card)return;transitionBusy=true;buttons.forEach(b=>b.disabled=true);
-try{
- if(!audio.paused){await fade(audio,0,720);audio.pause();audio.volume=1;return;}
- const item=visualizers.get(audio);connectVisualizer(audio,item);
- const resumePromise=audioContext?.state==='suspended'?audioContext.resume().catch(error=>{console.info('AudioContext resume:',error);}):Promise.resolve();
- audio.volume=0;const playPromise=audio.play();
- await Promise.resolve(playPromise);
- await resumePromise;
- const others=audios.filter(a=>a!==audio&&!a.paused);
- others.forEach(other=>other.closest('.audio-card')?.classList.add('track-exit'));
- card.classList.remove('track-enter');void card.offsetWidth;if(!reduced)card.classList.add('track-enter');
- activeTitle=card.dataset.title||'ANNA STARNESS';
- await Promise.all([
-   fade(audio,1,2000),
-   ...others.map(other=>fade(other,0,2000))
- ]);
- others.forEach(other=>{other.pause();other.volume=1;resetUI(other);other.closest('.audio-card')?.classList.remove('track-exit');});
- }catch(error){try{audio.pause();}catch(_){}audio.volume=1;resetUI(audio);syncRec();console.error('Ошибка воспроизведения:',error);alert('Не удалось запустить трек. Проверь, что MP3-файл находится в папке audio и доступен на сайте.');}
-finally{buttons.forEach(b=>b.disabled=false);transitionBusy=false;syncRec();}
+
+/* Тост вместо alert(): тихая подсказка в стиле сайта */
+let toastEl=null,toastTimer=null;
+function showToast(message){
+  if(!toastEl){toastEl=document.createElement('div');toastEl.className='toast';toastEl.setAttribute('role','status');document.body.append(toastEl);}
+  toastEl.textContent=message;toastEl.classList.add('show');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>toastEl.classList.remove('show'),4200);
 }
-buttons.forEach(btn=>{const id=btn.dataset.play,audio=$(`#audio-${id}`),card=btn.closest('.audio-card');if(!audio||!card)return;makeVisualizer(audio,card);btn.addEventListener('click',()=>toggleTrack(id));const progress=$('.progress-container',card),bar=$('.progress-bar',card),current=$('.current-time',card),duration=$('.duration',card);audio.addEventListener('play',()=>{setPlayingUI(audio);});audio.addEventListener('pause',()=>{resetUI(audio);syncRec();if(!audios.some(a=>!a.paused&&!a.ended)&&raf){cancelAnimationFrame(raf);raf=null;}});audio.addEventListener('ended',()=>{resetUI(audio);if(bar)bar.style.width='0%';if(current)current.textContent='0:00';syncRec();});audio.addEventListener('loadedmetadata',()=>{if(duration)duration.textContent=formatTime(audio.duration);});audio.addEventListener('timeupdate',()=>{const pct=audio.duration>0?audio.currentTime/audio.duration*100:0;if(bar)bar.style.width=pct+'%';if(current)current.textContent=formatTime(audio.currentTime);if(progress)progress.setAttribute('aria-valuenow',String(Math.round(pct)));});function seek(clientX){if(!Number.isFinite(audio.duration)||audio.duration<=0)return;const r=progress.getBoundingClientRect();audio.currentTime=Math.max(0,Math.min(1,(clientX-r.left)/r.width))*audio.duration;}progress.addEventListener('click',e=>seek(e.clientX));progress.addEventListener('keydown',e=>{if(!Number.isFinite(audio.duration))return;let t=audio.currentTime;if(e.key==='ArrowRight')t+=5;else if(e.key==='ArrowLeft')t-=5;else if(e.key==='Home')t=0;else if(e.key==='End')t=audio.duration;else return;e.preventDefault();audio.currentTime=Math.max(0,Math.min(audio.duration,t));});});
-$$('[data-theme]').forEach(btn=>btn.addEventListener('click',()=>{const theme=btn.dataset.theme;document.body.classList.remove('theme-ether','theme-fire');$$('[data-theme]').forEach(b=>{b.classList.remove('ether-active','fire-active');b.setAttribute('aria-pressed','false');});document.body.classList.add(`theme-${theme}`);btn.classList.add(`${theme}-active`);btn.setAttribute('aria-pressed','true');}));
-$$('.reveal').forEach(el=>{if(reduced||!('IntersectionObserver'in window)){el.classList.add('active');return;}const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target);}}),{threshold:.08});observer.observe(el);});
-const sticky=$('#sticky-cta'),hero=$('header');if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{const show=!e.isIntersecting;sticky.classList.toggle('opacity-0',!show);sticky.classList.toggle('translate-y-28',!show);sticky.classList.toggle('pointer-events-none',!show);}),{threshold:.08});observer.observe(hero);}
-let scrollPending=false;window.addEventListener('scroll',()=>{if(scrollPending)return;scrollPending=true;requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-innerHeight,p=max>0?scrollY/max*100:0;$('#top-progress').style.width=Math.max(0,Math.min(100,p))+'%';scrollPending=false;});},{passive:true});
-$('#story-btn').addEventListener('click',async()=>{const btn=$('#story-btn'),old=btn.textContent;btn.disabled=true;btn.textContent='Готовим сторис…';try{await document.fonts.ready;const c=document.createElement('canvas');c.width=1080;c.height=1920;const x=c.getContext('2d');x.fillStyle='#090909';x.fillRect(0,0,1080,1920);const img=new Image();img.crossOrigin='anonymous';img.src='./images/hero.jpg';await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;});const scale=Math.max(1080/img.width,1920/img.height),w=img.width*scale,h=img.height*scale;x.drawImage(img,(1080-w)/2,(1920-h)/2,w,h);x.fillStyle=getComputedStyle(document.body).getPropertyValue('--ambient')||'rgba(138,28,36,.2)';x.fillRect(0,0,1080,1920);const g=x.createLinearGradient(0,0,0,1920);g.addColorStop(0,'rgba(0,0,0,.25)');g.addColorStop(1,'rgba(0,0,0,.82)');x.fillStyle=g;x.fillRect(0,0,1080,1920);x.textAlign='center';x.fillStyle='#f5f5f5';x.font='italic 100px "Playfair Display"';x.fillText('ANNA',540,850);x.fillText('Starness',540,970);x.font='500 42px Inter';x.fillText(activeTitle.toUpperCase(),540,1190);x.font='italic 34px "Playfair Display"';x.fillStyle='#ffffffbb';x.fillText('Песни о том, что скрыто за кадром',540,1270);const blob=await new Promise(resolve=>c.toBlob(resolve,'image/jpeg',.92));if(!blob)throw new Error('Canvas export failed');const file=new File([blob],'anna-starness-story.jpg',{type:'image/jpeg'});if(navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'ANNA STARNESS',text:`Слушай «${activeTitle}» — ANNA STARNESS`});else{const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='anna-starness-story.jpg';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}}catch(e){console.error(e);alert('Не удалось создать сторис. Проверь доступность images/hero.jpg.');}finally{btn.disabled=false;btn.textContent=old;}});
+
+const formatTime=n=>Number.isFinite(n)?`${Math.floor(n/60)}:${String(Math.floor(n%60)).padStart(2,'0')}`:'0:00';
+
+function updateRec(){const h=String(Math.floor(recSeconds/3600)).padStart(2,'0'),m=String(Math.floor(recSeconds%3600/60)).padStart(2,'0'),s=String(recSeconds%60).padStart(2,'0');$('#timecode').textContent=`${h}:${m}:${s}`;}
+function syncRec(){
+  const playing=audios.some(a=>!a.paused&&!a.ended);
+  document.body.classList.toggle('audio-playing',playing);
+  $('#rec-dot').classList.toggle('is-on',playing);
+  if(playing&&!recTimer)recTimer=setInterval(()=>{recSeconds++;updateRec()},1000);
+  if(!playing&&recTimer){clearInterval(recTimer);recTimer=null;}
+}
+
+function resetUI(audio){
+  const card=audio.closest('.audio-card'),btn=$(`[data-play="${audio.id.replace('audio-','')}"]`);
+  card?.classList.remove('is-playing');btn?.classList.remove('is-playing');
+  if(btn)btn.setAttribute('aria-label',`Воспроизвести ${card?.dataset.title||''}`);
+}
+function setPlayingUI(audio){
+  const card=audio.closest('.audio-card'),btn=$(`[data-play="${audio.id.replace('audio-','')}"]`);
+  card?.classList.add('is-playing');btn?.classList.add('is-playing');
+  if(btn)btn.setAttribute('aria-label',`Пауза: ${card?.dataset.title||''}`);
+  syncRec();startWaves();
+}
+
+function makeVisualizer(audio,card){
+  const wave=document.createElement('div');wave.className='track-waveform';wave.setAttribute('aria-hidden','true');
+  for(let i=0;i<20;i++)wave.append(document.createElement('span'));
+  $('.track-heading',card).append(wave);
+  const item={audio,bars:[...wave.children],analyser:null,data:null,phase:Math.random()*6};
+  visualizers.set(audio,item);return item;
+}
+function connectVisualizer(audio,item){
+  if(item.analyser||item.failed)return;
+  try{
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC){item.failed=true;return;}
+    audioContext ||= new AC();
+    const source=audioContext.createMediaElementSource(audio),analyser=audioContext.createAnalyser();
+    analyser.fftSize=256;analyser.smoothingTimeConstant=.82;
+    source.connect(analyser);analyser.connect(audioContext.destination);
+    item.analyser=analyser;item.data=new Uint8Array(analyser.frequencyBinCount);
+  }catch(e){item.failed=true;console.info('Waveform fallback:',e);}
+}
+function drawWaves(){
+  let playing=false;
+  visualizers.forEach(item=>{
+    if(item.audio.paused||item.audio.ended)return;
+    playing=true;
+    if(item.analyser&&item.data&&audioContext?.state==='running'){
+      item.analyser.getByteFrequencyData(item.data);
+      item.bars.forEach((bar,i)=>{
+        const p=i/(item.bars.length-1),bin=Math.min(item.data.length-1,Math.floor(1+Math.pow(p,1.6)*(item.data.length-2))),
+              v=(item.data[bin]*.7+item.data[Math.min(bin+1,item.data.length-1)]*.3)/255,
+              level=Math.max(.09,Math.min(1,Math.pow(v,.8)));
+        bar.style.setProperty('--wave-level',level);bar.style.setProperty('--wave-opacity',.4+level*.6);
+      });
+    }else{
+      const t=performance.now()/1000;
+      item.bars.forEach((bar,i)=>{
+        const level=.12+Math.abs(Math.sin(t*3+i*.48+item.phase))*.65+Math.abs(Math.sin(t*1.8-i*.3))*.2;
+        bar.style.setProperty('--wave-level',Math.min(1,level));bar.style.setProperty('--wave-opacity',.45+Math.min(1,level)*.55);
+      });
+    }
+  });
+  if(playing)raf=requestAnimationFrame(drawWaves);else raf=null;
+}
+function startWaves(){if(!raf)raf=requestAnimationFrame(drawWaves);}
+
+const fadeJobs=new WeakMap();
+function fade(audio,target,duration=420){
+  const previous=fadeJobs.get(audio);
+  if(previous){cancelAnimationFrame(previous.raf);previous.finish();}
+  return new Promise(resolve=>{
+    const job={raf:0,finish:()=>{if(fadeJobs.get(audio)===job)fadeJobs.delete(audio);resolve();}};
+    fadeJobs.set(audio,job);
+    const from=audio.volume,start=performance.now(),ms=reduced?0:Math.max(0,duration);
+    function frame(now){
+      if(fadeJobs.get(audio)!==job)return;
+      const p=ms===0?1:Math.min(1,(now-start)/ms),ease=p*p*(3-2*p);
+      audio.volume=Math.max(0,Math.min(1,from+(target-from)*ease));
+      if(p<1)job.raf=requestAnimationFrame(frame);else job.finish();
+    }
+    job.raf=requestAnimationFrame(frame);
+  });
+}
+
+async function toggleTrack(id){
+  if(transitionBusy)return;
+  const audio=$(`#audio-${id}`),card=audio?.closest('.audio-card');
+  if(!audio||!card)return;
+  transitionBusy=true;buttons.forEach(b=>b.disabled=true);
+  try{
+    if(!audio.paused){await fade(audio,0,720);audio.pause();audio.volume=1;return;}
+    const item=visualizers.get(audio);connectVisualizer(audio,item);
+    const resumePromise=audioContext?.state==='suspended'?audioContext.resume().catch(error=>{console.info('AudioContext resume:',error);}):Promise.resolve();
+    audio.volume=0;const playPromise=audio.play();
+    await Promise.resolve(playPromise);
+    await resumePromise;
+    const others=audios.filter(a=>a!==audio&&!a.paused);
+    others.forEach(other=>other.closest('.audio-card')?.classList.add('track-exit'));
+    card.classList.remove('track-enter');void card.offsetWidth;if(!reduced)card.classList.add('track-enter');
+    activeTitle=card.dataset.title||'ANNA STARNESS';
+    await Promise.all([fade(audio,1,2000),...others.map(other=>fade(other,0,2000))]);
+    others.forEach(other=>{other.pause();other.volume=1;resetUI(other);other.closest('.audio-card')?.classList.remove('track-exit');});
+  }catch(error){
+    try{audio.pause();}catch(_){}
+    audio.volume=1;resetUI(audio);syncRec();
+    console.error('Ошибка воспроизведения:',error);
+    showToast('Трек не запустился. Попробуйте ещё раз или послушайте на band.link.');
+  }finally{buttons.forEach(b=>b.disabled=false);transitionBusy=false;syncRec();}
+}
+
+buttons.forEach(btn=>{
+  const id=btn.dataset.play,audio=$(`#audio-${id}`),card=btn.closest('.audio-card');
+  if(!audio||!card)return;
+  makeVisualizer(audio,card);
+  btn.addEventListener('click',()=>toggleTrack(id));
+  const progress=$('.progress-container',card),bar=$('.progress-bar',card),current=$('.current-time',card),duration=$('.duration',card);
+  audio.addEventListener('play',()=>{setPlayingUI(audio);});
+  audio.addEventListener('pause',()=>{resetUI(audio);syncRec();if(!audios.some(a=>!a.paused&&!a.ended)&&raf){cancelAnimationFrame(raf);raf=null;}});
+  audio.addEventListener('ended',()=>{resetUI(audio);if(bar)bar.style.width='0%';if(current)current.textContent='0:00';syncRec();});
+  audio.addEventListener('loadedmetadata',()=>{if(duration)duration.textContent=formatTime(audio.duration);});
+  audio.addEventListener('timeupdate',()=>{
+    const pct=audio.duration>0?audio.currentTime/audio.duration*100:0;
+    if(bar)bar.style.width=pct+'%';if(current)current.textContent=formatTime(audio.currentTime);
+    if(progress)progress.setAttribute('aria-valuenow',String(Math.round(pct)));
+  });
+  function seek(clientX){
+    if(!Number.isFinite(audio.duration)||audio.duration<=0)return;
+    const r=progress.getBoundingClientRect();
+    audio.currentTime=Math.max(0,Math.min(1,(clientX-r.left)/r.width))*audio.duration;
+  }
+  progress.addEventListener('click',e=>seek(e.clientX));
+  progress.addEventListener('keydown',e=>{
+    if(!Number.isFinite(audio.duration))return;
+    let t=audio.currentTime;
+    if(e.key==='ArrowRight')t+=5;else if(e.key==='ArrowLeft')t-=5;
+    else if(e.key==='Home')t=0;else if(e.key==='End')t=audio.duration;else return;
+    e.preventDefault();audio.currentTime=Math.max(0,Math.min(audio.duration,t));
+  });
+});
+
+$$('[data-theme]').forEach(btn=>btn.addEventListener('click',()=>{
+  const theme=btn.dataset.theme;
+  document.body.classList.remove('theme-ether','theme-fire');
+  $$('[data-theme]').forEach(b=>{b.classList.remove('ether-active','fire-active');b.setAttribute('aria-pressed','false');});
+  document.body.classList.add(`theme-${theme}`);
+  btn.classList.add(`${theme}-active`);btn.setAttribute('aria-pressed','true');
+}));
+
+$$('.reveal').forEach(el=>{
+  if(reduced||!('IntersectionObserver'in window)){el.classList.add('active');return;}
+  const observer=new IntersectionObserver(entries=>entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target);}
+  }),{threshold:.08});
+  observer.observe(el);
+});
+
+/* Липкий CTA: появляется, когда hero уходит с экрана */
+const sticky=$('#sticky-cta'),hero=$('header');
+if('IntersectionObserver'in window){
+  const observer=new IntersectionObserver(entries=>entries.forEach(e=>{
+    sticky.classList.toggle('is-visible',!e.isIntersecting);
+  }),{threshold:.08});
+  observer.observe(hero);
+}
+
+let scrollPending=false;
+window.addEventListener('scroll',()=>{
+  if(scrollPending)return;scrollPending=true;
+  requestAnimationFrame(()=>{
+    const max=document.documentElement.scrollHeight-innerHeight,p=max>0?scrollY/max*100:0;
+    $('#top-progress').style.width=Math.max(0,Math.min(100,p))+'%';scrollPending=false;
+  });
+},{passive:true});
+
+$('#story-btn').addEventListener('click',async()=>{
+  const btn=$('#story-btn'),old=btn.textContent;
+  btn.disabled=true;btn.textContent='Готовим сторис…';
+  try{
+    await document.fonts.ready;
+    const c=document.createElement('canvas');c.width=1080;c.height=1920;
+    const x=c.getContext('2d');
+    x.fillStyle='#090909';x.fillRect(0,0,1080,1920);
+    const img=new Image();img.crossOrigin='anonymous';img.src='./images/hero.jpg';
+    await new Promise((res,rej)=>{img.onload=res;img.onerror=rej;});
+    const scale=Math.max(1080/img.width,1920/img.height),w=img.width*scale,h=img.height*scale;
+    x.drawImage(img,(1080-w)/2,(1920-h)/2,w,h);
+    x.fillStyle=getComputedStyle(document.body).getPropertyValue('--ambient')||'rgba(138,28,36,.2)';
+    x.fillRect(0,0,1080,1920);
+    const g=x.createLinearGradient(0,0,0,1920);
+    g.addColorStop(0,'rgba(0,0,0,.25)');g.addColorStop(1,'rgba(0,0,0,.82)');
+    x.fillStyle=g;x.fillRect(0,0,1080,1920);
+    x.textAlign='center';x.fillStyle='#f5f5f5';
+    x.font='italic 100px "Playfair Display"';x.fillText('ANNA',540,850);x.fillText('Starness',540,970);
+    x.font='500 42px Inter';x.fillText(activeTitle.toUpperCase(),540,1190);
+    x.font='italic 34px "Playfair Display"';x.fillStyle='#ffffffbb';
+    x.fillText('Песни о том, что скрыто за кадром',540,1270);
+    const blob=await new Promise(resolve=>c.toBlob(resolve,'image/jpeg',.92));
+    if(!blob)throw new Error('Canvas export failed');
+    const file=new File([blob],'anna-starness-story.jpg',{type:'image/jpeg'});
+    if(navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'ANNA STARNESS',text:`Слушай «${activeTitle}» — ANNA STARNESS`});
+    else{const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='anna-starness-story.jpg';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+  }catch(e){
+    console.error(e);
+    showToast('Не удалось создать сторис. Проверьте доступность images/hero.jpg.');
+  }finally{btn.disabled=false;btn.textContent=old;}
+});
 })();
 </script>
 </body>
